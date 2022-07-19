@@ -13,7 +13,8 @@ Router.get("/Feedback", async (req, res) => {
 });
 
 // Create
-Router.post("/Feedback", async (req, res) => {
+Router.post("/Feedback/", async (req, res) => {
+  console.log(req)
   try {
     res.json(await Feedback.create(req.body));
   } catch (error) {
