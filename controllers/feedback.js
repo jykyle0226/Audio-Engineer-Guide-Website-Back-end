@@ -1,12 +1,11 @@
 const express = require("express");
-const router = express.Router();
-const feedback = require("../models/feedback");
+const Router = express.Router();
+const Feedback = require("../models/feedback");
 
 // Index
-router.get("/feedback", async (req, res) => {
+Router.get("/Feedback", async (req, res) => {
   try {
-    const feedback = await feedback.find({});
-    res.json(feedback);
+    res.json(await Feedback.find({}));
   } catch (error) {
     console.log("error:", error);
     res.json({ error: "Something Went Wrong - Check Console" });
@@ -14,21 +13,20 @@ router.get("/feedback", async (req, res) => {
 });
 
 // Create
-router.post("/feedback", async (req, res) => {
+Router.post("/Feedback", async (req, res) => {
   try {
-    const feedback = await feedback.create(req.body);
-    res.json(activity);
+    res.json(await Feedback.create(req.body));
   } catch (error) {
     console.log("error:", error);
     res.json({ error: "Something Went Wrong - Check Console" });
   }
 });
 
-// Update
-router.put("/feedback/:id", async (req, res) => {
+// Update 
+Router.put("/Feedback/:id", async (req, res) => {
   try {
     res.json(
-      await feedback.findByIdAndUpdate(req.params.id, req.body, { new: true })
+      await Feedback.findByIdAndUpdate(req.params.id, req.body, { new: true })
     );
   } catch (error) {
     console.log("error:", error);
@@ -37,13 +35,13 @@ router.put("/feedback/:id", async (req, res) => {
 });
 
 // Delete
-router.delete("/feedback/:id", async (req, res) => {
+Router.delete("/Feedback/:id", async (req, res) => {
   try {
-    res.json(await feedback.findByIdAndDelete(req.params.id));
+    res.json(await Feedback.findByIdAndDelete(req.params.id));
   } catch (error) {
     console.log("error:", error);
     res.json({ error: "Something Went Wrong - Check Console" });
   }
 });
 
-module.exports = router;
+module.exports = Router;

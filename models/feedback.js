@@ -5,9 +5,9 @@ const feedbackSchema = new mongoose.Schema({
   name: String,
   role: String,
   feedback: String,
-  solution: String
+  solution: String,
 });
 
-const Feedback = mongoose.model("Activity", feedbackSchema);
+const Feedback = mongoose.model("Feedback", feedbackSchema);
 
 module.exports = Feedback;
